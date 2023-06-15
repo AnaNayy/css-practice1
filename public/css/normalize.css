@@ -1,5 +1,7 @@
+@layer normalize, main, component, style;
 
 
+@layer normalize {
 /* Document
    ========================================================================== */
 
@@ -938,3 +940,4 @@ input:-webkit-autofill {
   box-shadow: none;
 }
 
+}

@@ -1,3 +1,19 @@
+@import '/css/var.css';
+
+@font-face {
+    font-family: "Segment";
+    src: url('/font/Segment-Regular.otf');
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: "Segment";
+    src: url('/font/Segment-SemiBold.otf');
+    font-weight: 600;
+}
+
+@layer normalize, main, component, style;
+
 @keyframes fly {
     from {
         top: 0;
@@ -19,31 +35,6 @@
     }
 }
 
-:root {
-    font-family: "Roboto";
-
-    --space-m: 12px;
-    --space-xm: 16px;
-    --space-l: 24px;
-    --space-b: 36px;
-
-    --size-s: 14px;
-    --size-d: 16px;
-    --size-l: 20px;
-
-    --color-border:#DEE2E6;
-    --color-primary: rgb(119, 52, 191);
-    --color-white: #fff;
-    --color-title: #5A5A5A;
-    --color-text: #343a40;
-
-    --border-radius: 12px;
-
-    --weight-title: 500;
-    --weight-title: 400;
-
-    --page-width: 960px;
-}
 
 /* ==================================== */
 
@@ -238,28 +229,32 @@
 }
 
 
-.button {
-    display: inline-block;
-    font-size: var(--size-d);
-    text-decoration: none;
-    padding: var(--space-m) var(--space-xm);
-    border-radius: var(--border-radius);
-    text-align: center;
-    transition: opacity, background-color;
-    transition-duration: 1s;
-}
-.card_button {
-    color: var(--color-white);
-    background-color: var(--color-primary);
-    border-radius: 4px;
-}
-
-.button:hover {
-    opacity: 0.7;
-    background-color: palevioletred;
-    color: #212529;
+@layer main {
+    .button {
+        display: inline-block;
+        font-size: var(--size-d);
+        text-decoration: none;
+        padding: var(--space-m) var(--space-xm);
+        border-radius: var(--border-radius);
+        text-align: center;
+        transition: opacity, background-color;
+        transition-duration: 1s;
+    }
+    
+    .button:hover {
+        opacity: 0.7;
+        background-color: palevioletred;
+        color: #212529;
+    }
 }
 
+@layer component {
+    .card_button {
+        color: var(--color-white);
+        background-color: var(--color-primary);
+        border-radius: 4px;
+    }
+}
 .form {
     display: flex;
     justify-content: space-between;
@@ -384,3 +379,86 @@ body:hover .modal {
     border: 1px solid var(--color-title);
     border-radius: 2px;
 }
+:root {
+    scroll-behavior: smooth;
+}
+
+.blog {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+
+}
+/* @media all and (min-width: 0px) and (max-width: 600px) {
+    .blog {
+        grid-template-columns: 1fr;
+    }
+} */
+
+@media all and (601px < width <= 800px),
+all and (min-width: 1200px) {
+    .blog {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media all and (width <= 600px) {
+    .blog {
+        grid-template-columns: 1fr;
+    }
+}
+/* @media all and (not (min-width: 800px)) {
+    .page_content {
+    background-color: rgb(192, 246, 246);
+}
+} */
+.form {
+    gap: var(--space-l);
+}
+@media all and (width <= 560px) {
+    .form {
+      flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+    }
+    .form_info {
+        max-width: 300px;
+        width: 100%;
+        line-height: 150%;
+    }
+    .form_content {
+        align-items: center;
+        text-align: center;
+    }
+}
+.hero_container {
+    container-type: inline-size;
+    container-name: hero;
+}
+
+@container hero (width < 960px) {
+ .hero {
+     flex-direction: column;
+}
+}
+@layer style {.button:hover {
+    opacity: 0.7;
+    background-color: palevioletred;
+    color: #212529;
+}}
+
+.ex {
+    display: inline-block;
+    font-size: 16px;
+    margin-left: 1ex;
+    line-height: 1.5em;
+}
+
+/* .test {
+    position: absolute;
+    background-color: rgb(249, 205, 151);
+    top: 0;
+    left: 0;
+
+    height: 100vh;
+    width: 100vw;
+} */
